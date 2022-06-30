@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show Orders</title>
+</head>
+<body>
+    <h1>Here is your Order Page</h1>
+
+    <form action="/orders/process" method="POST">
+        <!-- CHOOSE ACCOUT -->
+        <label for="account">Choose an account for your Purchase</label>
+        <select name="account" >
+            {% for object in current_user %}
+                <option value="{{object.account.id}}">{{object.account.name}}</option>
+            {% endfor%}
+        </select>
+        <!-- CHOOSE COMPANY -->
+        <label for="company">Choose a Company to Purchase Stock From</label>
+        <select name="company" >
+            {% for company in companies %}
+                <option value="{{company.id}}">{{company.name}}</option>
+            {% endfor%}
+        </select>
+        <!-- # OF SHARES -->
+        <label for="num_of_shares">Input the Number of Shares you Would Like to Purchase</label>
+        <input type="text" name="num_of_shares">
+        
+        <input type="submit" value="Place Order">
+        
+        
+
+
+
+
+
+    </form>
+        <br>
+    <br>
+
+
+
+
+</body>
+</html>

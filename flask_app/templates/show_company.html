@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/company_profile.css') }}">
+    <title>Company Profile</title>
+</head>
+<body>
+    <div class="container">
+        <div class="header flex space-between">
+            <!-- top links -->
+            <div class="flex top-header center-align">
+                <!-- left -->
+                <a href="">Banking</a>
+                <a href="">Stock Plans</a>
+            </div>
+            <div class="flex top-header center-align" >
+                <!-- right -->
+                <a href="">Refer a Friend</a>
+                <a href="">Contact Us</a>
+                <a href="">Log On</a>
+            </div>
+        </div>
+        <div class="main-header flex vertical-align space-between ">
+            <!-- main header -->
+
+            <div class="flex center-align">
+                <!-- left -->
+                <h3>Morning Sparrow</h1>
+                <p></p><a href="https://www.nerdwallet.com/article/investing/types-investment-accounts-know">Account Types</a></p>
+                <a href="https://www.nerdwallet.com/article/investing/how-to-invest-in-stocks"><p>How to Invest</p></a>
+                <a href="https://us.etrade.com/"><p>Trading</p></a>
+            </div>
+            <div class="flex center-align">
+                <!-- right -->
+                <form action="/dashboard">
+                    <input type="submit" value="Profile Dashboard">
+                </form>
+                <form action="/logout">
+                    <input type="submit" value="Log Out">
+                </form>
+            </div>
+        </div>
+        <h1 class="net-worth"> Company Info</h1>
+        <div class="company-info flex" style="padding: 30px 0px">
+            <div class="flex-1">
+                <h1>{{cached_company.name}}</h1>
+            </div>
+            <div class="flex-2">
+                <h3 style="text-decoration: underline;">{{cached_company.name}} Financials</h3>
+                <div class="flex">
+                    <div class="margin-sides-10">
+                        <h3>Price Per Share:</h3>
+                        <h3>Outstanding Shares:</h3>
+                    </div>
+                    <div class="margin-sides-10">
+                        <h3>${{cached_company.price_per_share}}</h3>
+                        <h3>{{cached_company.num_shares_outstanding}}</h3>
+                    </div>
+                </div>
+    
+            </div>
+        </div>
+        <div class="purchase-stock">
+            <h1 class="net-worth">Place an Stock Purchase Order</h1>
+            <form action="/orders/process" method="POST">
+                <div>
+                    <input type="hidden" name="company_id" value="{{cached_company.id}}">
+                    <input type="hidden" name="price_per_share" value="{{cached_company.price_per_share}}">
+                    <div class="flex">
+                        <h3 class="margin-sides-10">Select an Account to place your order from</h3>
+                        <select class="margin-sides-10" name="account_id" id="">
+                            {% set account_for = [] %}
+                            {% for object in current_user %}
+                            {% if object.account.id not in account_for %}
+                            {{ account_for.append(object.account.id)}}
+                            <option value="{{object.account.id}}">{{object.account.name}} : Current Balance ${{object.account.value}}</option>
+                            {% endif %}
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="flex">
+                        <h3 class="margin-sides-10"><label for="share_num">Number of Shares I would like to purchase </label></h3>
+                        <input class="margin-sides-10" type="number" name="share_num">
+                    </div>
+                    <input class="margin-sides-10" type="submit" value="Submit Order">
+                </div>
+            </form>
+        </div>
+        <div>
+            <h1 class="net-worth">Set New Stock Price For {{cached_company.name}}</h1>
+            <div class="margin-top-10">
+                <form action="/companies/{{cached_company.id}}/update_price" method= "POST">
+                    <h3><label for="price_per_share">Enter New Price Per Share:</label></h3>
+                    <input type="number" name="price_per_share" id="">
+                    <input type="hidden" name="id" value="{{cached_company.id}}">
+            
+                    <input type="submit" value="Adjust Share Price">
+                </form>
+            </div>
+        </div>
+    </div>
+<!-- <br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+    <h1>Hello. You have arrived at the {{cached_company.name}} page!!</h1>
+    <h1>The current price of a share is ${{cached_company.price_per_share}}</h1>
+    <h1>There are currently {{cached_company.num_shares_outstanding}} shares available for purchasing</h1>
+
+    <h1>Place an order</h1>
+    <form action="/orders/process" method="POST">
+
+        <h3>Select an Account to place your order from</h3>
+        <select name="account_id" id="">
+            {% set account_for = [] %}
+            {% for object in current_user %}
+                {% if object.account.id not in account_for %}
+                {{ account_for.append(object.account.id)}}
+                    <option value="{{object.account.id}}">{{object.account.name}} : Current Balance ${{object.account.value}}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
+        <label for="share_num">How many Shares would you like to purchase</label></h3>
+        <input type="number" name="share_num">
+        <input type="hidden" name="company_id" value="{{cached_company.id}}">
+        <input type="hidden" name="price_per_share" value="{{cached_company.price_per_share}}">
+        <input type="submit" value="Submit Order">
+
+
+    </form>
+
+    <form action="/companies/{{cached_company.id}}/update_price" method= "POST">
+        <label for="price_per_share">Enter New Price Per Share</label>
+        <input type="number" name="price_per_share" id="">
+        <input type="hidden" name="id" value="{{cached_company.id}}">
+
+        <input type="submit" value="Adjust Share Price">
+    </form> -->
+</body>
+</html>

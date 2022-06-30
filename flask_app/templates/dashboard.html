@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/dashboard.css') }}">
+    <title>Dashboard</title>
+</head>
+<body>
+    <div class="container">
+
+        <div class="header flex space-between">
+            <!-- top links -->
+            <div class="flex top-header center-align">
+                <!-- left -->
+                <a href="">Banking</a>
+                <a href="">Stock Plans</a>
+            </div>
+            <div class="flex top-header center-align" >
+                <!-- right -->
+                <a href="">Refer a Friend</a>
+                <a href="">Contact Us</a>
+                <a href="">Log On</a>
+            </div>
+        </div>
+        <div class="main-header flex vertical-align space-between ">
+            <!-- main header -->
+
+            <div class="flex center-align">
+                <!-- left -->
+                <div class="flex center-align">
+                    <img src="{{ url_for('static',filename='img/sparrow.jpg') }}" alt="morning_sparrow_logo">
+                    <h2>Morning Sparrow Trading</h2>
+                </div>
+                <div class="flex center-align">
+                    <!-- left -->
+                    <a href="https://www.nerdwallet.com/article/investing/types-investment-accounts-know"><p>Account Types</p></a>
+                    <a href="https://www.nerdwallet.com/article/investing/how-to-invest-in-stocks"><p>How to Invest</p></a>
+                    <a href="https://us.etrade.com/"><p>Trading</p></a>
+                </div>
+            </div>
+            <div class="flex center-align">
+                <!-- right -->
+                <form action="/logout">
+                    <input type="submit" value="Log Out">
+                </form>
+            </div>
+        </div>
+        <div class="main-body">
+            <h1 class="net-worth text-center"> Total Accounts Net Worth : PLACEHOLDER</h1>
+            <h3 style="margin: 20px 0px; border-bottom: 2px black solid;">Your Accounts:</h3>
+            {% set account_for = [] %}
+            {% for object in current_user %}
+                {% if object.account.id not in account_for %}
+                {{ account_for.append(object.account.id)|default("", True)}}
+                <div class="current-accounts flex">
+                    <h3>Account Name:</h3>
+                    <h3>{{object.account.name}}:</h3>
+                    <h3>Cash Available</h3>
+                    <h3>${{object.account.value}}</h3>
+                    <h3>Account Portfolio Value</h3>
+                    <h3>PLACE-HOLDER</h3>
+                    <h3><a href="/accounts/view/{{object.account.id}}">See Portfolio</a></h3>
+                </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <div class="flex">
+            <div class="available-companies flex-1">
+                <h1 class="new-account-header text-center">Our Tradable Companies</h1>
+                <div class="flex">
+                    <div class="flex-1">
+                        {% for company in companies %}
+                        <h3 style="margin: 10px 0px;"><a href="/companies/{{company.id}}">{{company.name}}</a> 
+                            {% endfor %}
+                    </div>
+                    <div class="flex-1">
+                        <form action="/add_company_by_ticker" method="POST">
+                            <h3><label for="symbol">To add a company to our list of tradable list, please input the ticker symbol below:</label></h3>
+                            <input type="text" name="symbol">
+                            <input type="submit" value="Submit">
+                        </form>
+                    </div>
+                </div>   
+            </div>
+            <div class="create-account flex-1">
+                <h1 class="new-account-header text-center">Create a New Account</h1>
+                <form class="new-account justify-center center-align flex" action="/accounts/create" method="POST">
+                    <div style="margin: 10px 10px;">
+                        <h3 style="margin: 10px 0px;"><label for="name">New Account Name:</label></h3>
+                        <h3 style="margin: 10px 0px;"><label for="value">New Account Starting Balance:</label></h3>
+                    </div>
+                    <div style="margin: 10px 10px;">
+                        <p style="margin: 10px 0px;"><input type="text" name="name"></p>
+                        <p style="margin: 10px 0px;"><input type="number" name="value"></p>
+                    </div>
+                    <input type="hidden" name="user_id" value="{{session['user_id']}}">
+                    <input class="" type="submit" value="Create Account">
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+
+</body>>
+

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Place an order</h1>
+    <form action="">
+        <label for="company">Company:</label>
+        <select name="company" id="">
+            {% for company in companies %}
+            <option value="name">{{company.name}} : Current price/share: ${{company.price_per_share}}</option>
+            {% endfor %}
+        </select>
+        <h3>Select an Account to place your order from</h3>
+        <select name="account" id="">
+            {% for account in user %}
+            <option value="name">{{account.accounts.name}} : Current Balance ${{account.accounts.value}}</option>
+            {% endfor %}
+        </select>
+        <label for="num_shares_purchased">How many Shares would you like to purchase</label>
+        <input type="text" name="num_shares_purchased">
+    
+
+
+
+    </form>
+
+</body>
+</html>

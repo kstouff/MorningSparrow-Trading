@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/show_account.css') }}">
+    <title>Show Positions</title>
+</head>
+<body>
+    
+    <div class="container">
+
+        <div class="header flex space-between">
+            <!-- top links -->
+            <div class="flex top-header center-align">
+                <!-- left -->
+                <a href="">Banking</a>
+                <a href="">Stock Plans</a>
+            </div>
+            <div class="flex top-header center-align" >
+                <!-- right -->
+                <a href="">Refer a Friend</a>
+                <a href="">Contact Us</a>
+                <a href="">Log On</a>
+            </div>
+        </div>
+        <div class="main-header flex vertical-align space-between ">
+            <!-- main header -->
+
+            <div class="flex center-align">
+                <!-- left -->
+                <h3>Morning Sparrow</h1>
+                <p></p><a href="https://www.nerdwallet.com/article/investing/types-investment-accounts-know">Account Types</a></p>
+                <a href="https://www.nerdwallet.com/article/investing/how-to-invest-in-stocks"><p>How to Invest</p></a>
+                <a href="https://us.etrade.com/"><p>Trading</p></a>
+            </div>
+            <div class="flex center-align">
+                <!-- right -->
+                <form action="/dashboard">
+                    <input type="submit" value="Profile Dashboard">
+                </form>
+                <form action="/logout">
+                    <input type="submit" value="Log Out">
+                </form>
+            </div>
+        </div>
+        <div class="account-title">
+            <h1>Account Name</h1>
+            <h2>Cash Balance</h2>
+            <h3>Cash Ammount(PLACEHOLDER)</h3>
+        </div>
+        <div class="position-list">
+            <h3>Positions</h3>
+            <div class="flex space-between">
+                <h3>Company Name:</h3>
+                <h3>Total Shares in Account:</h3>
+                <h3>Average Price Per Share:</h3>
+                <h3>Total Value of Position:</h3>
+            </div>
+            {% for account in accounts%}
+            <div class="flex space-between">
+                <h3>{{account.company.name}}</h3>
+                <h3>{{account.total_shares}}</h3>
+                <h3>${{account.average_price}}</h3>
+                <h3>${{account.total_value}}</h3>
+            </div>
+            {%endfor%}
+
+        </div>
+
+
+
+    
+
+
+    </div>
+</body>
+</html>

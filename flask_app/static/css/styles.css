@@ -1,0 +1,172 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: sans-serif;
+}
+body{
+    background-color: rgb(255, 255, 255);
+}
+.vertical-center{
+    vertical-align: middle;
+}
+.text-center{
+    text-align: center;
+}
+.space-between{
+    justify-content: space-between;
+}
+.space-evenly{
+    justify-content: space-evenly ;
+}
+.space-around{
+    justify-content: space-around ;
+}
+.justify-center{
+    justify-content: center;
+}
+.flex{
+    display: flex;
+}
+.center-align{
+    align-items: center;
+}
+
+.content-align-center{
+    align-content: center;
+}
+.blog{
+    
+    background-color: white;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 20px;
+    margin: -80px 25px ;
+
+}
+.sign-in h1{
+    text-align: center;
+    margin: 20px;
+}
+
+.sign-up{
+    background-color: white;
+    margin: 20px;
+    border: 2px black solid;
+    border-radius: 20px;
+}
+
+.sign-up label{
+    margin-left: 110px;
+}
+
+input {
+    max-width: 200px;
+    max-height: 20px;
+    
+}
+
+.sign-in{
+
+    background-color: white;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 20px;
+    margin: 0px 25px ;
+}
+.email{
+    
+    
+    /* background-color: aliceblue; */
+}
+.password{
+    
+    
+    /* background-color: chocolate; */
+}
+.email >*{
+    display: block;
+    margin:20px 0px;
+}
+.password >*{
+    margin:20px 0px;
+    display: block;
+    
+}
+
+
+
+.white-background{
+    background-color: white;
+}
+
+.container{
+    margin: 0px 50px;
+    background-color: white;
+}
+.top-header a{
+    padding: 0px 10px;
+    background-color: white;
+
+}
+
+.main-header{
+    height: 70px;
+    background-color: white;
+}
+
+.main-header div > *{
+    padding: 0px 10px;
+    vertical-align: auto;
+
+}
+.main-header div button{
+    height: 20px
+}
+
+.main-body{
+    padding: 90px 10px;
+}
+
+.flex-1{
+    flex:1
+}
+
+.flex-2{
+    flex:2
+}
+
+.blog >*{
+    text-align: center;
+    color: black;
+    margin: 15px 40px;
+
+}
+
+
+
+.alert{
+    background-color: white;
+    height: 100px;
+    position: fixed;
+    bottom: 0;
+    border: 2px black solid;
+}
+.alert button {
+    margin: 10px ;
+
+}
+.alert img,h6,button {
+    margin: 10px 20px;
+
+}
+.alert button{
+    background-color: rgb(0,209,178);
+    color: #fff;
+    width: 80px;
+    height: 30px;
+    border: 2px solid #000;
+    box-shadow: 4px 4px #000;
+    font-size: 1rem;
+    cursor: pointer;
+
+}

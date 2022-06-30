@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/styles.css') }}">
+    <title>Sign In</title>
+</head>
+<body>
+    <div class="container">
+
+        <div class="header flex space-between">
+            <!-- top links -->
+            <div class="flex top-header center-align">
+                <!-- left -->
+                <a href="">Banking</a>
+                <a href="">Stock Plans</a>
+            </div>
+            <div class="flex top-header center-align" >
+                <!-- right -->
+                <a href="">Refer a Friend</a>
+                <a href="">Contact Us</a>
+                <a href="">Log On</a>
+            </div>
+        </div>
+        <div class="main-header flex vertical-align space-between ">
+            <!-- main header -->
+
+            <div class="flex center-align">
+                <!-- left -->
+                <h3>Morning Sparrow</h1>
+                    <a href="https://www.nerdwallet.com/article/investing/types-investment-accounts-know"><p>Account Types</p></a>
+                    <a href="https://www.nerdwallet.com/article/investing/how-to-invest-in-stocks"><p>How to Invest</p></a>
+                    <a href="https://us.etrade.com/"><p>Trading</p></a>
+            </div>
+            <div class="flex center-align">
+                <!-- right -->
+                <button>Open an Account</button>
+            </div>
+        </div>
+        <div class="sign-up">
+            <div>
+                <form action="/user/create" method="post">
+                    <div class="flex center-align">
+                        <h1 class="flex-1 text-center">Sign Up now to starting trading immediately!</h1>
+                        <div class="email flex-1" >
+                            <label for="first_name">First Name:</label>
+                            <label for="last_name">Last Name:</label>
+                            <label for="email">Email:</label>
+                            <label for="password">Password:</label>
+                            <label for="confirm_password">Confirm Password:</label>
+                        </div>
+                        <div class="password flex-1 text-center">
+                            <input type="text" name="first_name">
+                            <input type="text" name="last_name">
+                            <input type="text" name="email">
+                            <input type="text" name="password">
+                            <input type="text" name="confirm_password">
+                        </div>                
+                    </div>
+                    <div  class="flex space-around">
+                        <input style="margin: 30px;" type="submit" value="SIGN UP!">
+                    </div>
+
+                
+                </form>
+                
+            </div>
+        </div>
+        <div class="main-body flex">
+            <!-- main body -->
+
+            <div class="blog flex-1">
+                <h1>About Morning Sparrow Trading</h1>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta hic a amet velit iste doloremque non dolore sed officiis inventore aliquam perspiciatis corrupti tempore quod illum, aperiam sunt quae, at totam? Illum adipisci, soluta error, minus odit ipsam consequuntur velit natus, recusandae ea laboriosam voluptatibus doloribus architecto iusto mollitia cumque consectetur optio commodi quaerat nemo sit earum accusantium! Necessitatibus beatae nulla quisquam? Asperiores, atque laudantium corporis quos libero maiores? Enim nam, iusto voluptatem assumenda natus consectetur repudiandae quasi quos, commodi esse ab? Architecto nobis saepe officia voluptatibus dignissimos soluta nostrum. Dolore nesciunt minima beatae! Possimus, repudiandae nisi sit, maxime nostrum eum aperiam iure omnis illum consequatur id. Harum quos nemo doloribus. Repellat velit corporis et quaerat. Sunt ab iste assumenda quisquam accusantium repellendus animi voluptatibus numquam quasi? Expedita, aspernatur provident quibusdam atque rerum recusandae repudiandae non iste dignissimos at eaque magnam explicabo sed doloribus necessitatibus, nihil blanditiis, voluptas vero vitae itaque eveniet beatae quaerat. Illum, tempora ipsa doloribus aspernatur consectetur cumque ducimus itaque? Saepe aliquid neque velit doloribus iusto laudantium odio sunt deserunt omnis nam nulla odit consequuntur magni quas cumque earum, provident, cum tempore, eligendi enim reiciendis minima? Explicabo voluptates maiores minus reprehenderit magni dignissimos facilis voluptatum odit suscipit?</p>
+            </div>
+
+            <form class="sign-in flex-1" action="/user/login" method="post">
+                <!-- sign in  -->
+                <h1>Do you have an Account?</h1>
+                <div class="flex space-around">
+                    <div class="email">
+                        <label class="" for="email">Email:</label>                        
+                        <label class="" for="password">Password:</label>
+                    </div>
+                    <div class="password">
+                        <input class="" type="text" name="email">                        
+                        <input class="" type="text" name="password">
+                    </div>  
+                </div>
+                <div class="flex space-around" style="width: 100%;">
+                    <input style="margin: 30px;" type="submit" value="Log input">
+                </div>             
+                
+            </form>
+        </div>
+
+        </div>
+        <div>
+            <!-- redirect to yahoo financials -->
+        </div>
+        {% with messages = get_flashed_messages() %}     <!-- declare a variable called messages -->
+        {% if messages %}                            <!-- check if there are any messages -->
+        <div class="alert flex center-align">
+                {% for message in messages %}            <!-- loop through the messages -->
+                <h6>{{message}}</h6>                   <!-- display each message in a paragraph tag -->
+                {% endfor %}
+                <button onclick="removeAlert(this)">I Accept</button>
+        </div>
+        {% endif %}
+    {% endwith %}
+            
+        
+        
+        
+        
+        
+    </div>   
+
+
+
+<script src="{{ url_for('static',filename='js/script.js') }}"></script>
+</body>
+</html>

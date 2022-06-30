@@ -1,0 +1,86 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: sans-serif;
+}
+body{
+    background-color: rgb(255, 255, 255);
+}
+.vertical-center{
+    vertical-align: middle;
+}
+.text-center{
+    text-align: center;
+}
+.space-between{
+    justify-content: space-between;
+}
+.space-evenly{
+    justify-content: space-evenly ;
+}
+.space-around{
+    justify-content: space-around ;
+}
+.justify-center{
+    justify-content: center;
+}
+.center-align{
+    align-items: center;
+}
+
+.content-align-center{
+    align-content: center;
+}
+.flex{
+    display: flex;
+}
+.flex-1{
+    flex:1
+}
+
+.flex-2{
+    flex:2
+}
+
+.container{
+    margin: 0px 50px;
+    background-color: white;
+}
+.top-header a{
+    padding: 0px 10px;
+    background-color: white;
+
+}
+
+.main-header{
+    height: 70px;
+    background-color: white;
+}
+
+.main-header div > *{
+    padding: 0px 10px;
+    vertical-align: auto;
+
+}
+.main-header div button{
+    height: 20px
+}
+
+.account-title > *{
+    text-align: center;
+}
+.position-list{
+    margin: 20px;
+}
+.position-list-h1{
+    text-decoration: underline;
+
+}
+
+.position-list div{
+    border-bottom: 1px solid black;
+    margin-bottom: 30px;
+}
+.position-list h3{
+    width: 500px;
+}

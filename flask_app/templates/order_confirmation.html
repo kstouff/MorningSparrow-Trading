@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmation</title>
+</head>
+<body>
+    
+    <div class="container" style="margin: 300px; border: 2px solid black; border-radius: 30px;">
+        <div style="text-align: center;">
+            <h1>Your order has been confirmed</h1>
+            <h1>You currently hold a position worth ${{total_position.total_position_value}} </h1>
+            <h1>with {{total_position.total_position_shares}} with an average price per share of ${{total_position.avg_price_per_share}}</h1>
+            <h4><a href="/dashboard">Return to Dashboard</a></h4>
+            <h4><a href="/accounts/view/{{account_id}}">Go to Account Portfolio</a></h4>
+        </div>
+    </div>
+
+
+
+    
+    
+
+
+
+</body>
+</html>
